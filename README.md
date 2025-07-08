@@ -27,3 +27,9 @@
 2.1 settings.py
 
 2.2 templates
+
+
+![alt text](image.png)
+![alt text](image-1.png)
+## se registro automaticamente
+![alt text](image-2.png)
