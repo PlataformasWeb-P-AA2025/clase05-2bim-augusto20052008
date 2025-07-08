@@ -90,8 +90,12 @@ def crear_estudiante(request):
 
     return render(request, 'crearEstudiante.html', diccionario)
 
-
-@login_required(login_url='/entrando/login/')
+# Comentamos esta linea porque no es necesario, debido a que
+# ya tenemos el decorador @login_required la cual tiene la funcion de
+# redirigir a la pagina de login si el usuario no esta autenticado por medio de
+# la variable login_url que se encuentra en settings.py
+# @login_required(login_url='/entrando/login/')
+@login_required
 @permission_required('administrativo.change_estudiante',)
 def editar_estudiante(request, id):
     """
@@ -109,7 +113,8 @@ def editar_estudiante(request, id):
 
     return render(request, 'editarEstudiante.html', diccionario)
 
-
+@login_required
+@permission_required('administrativo.delete_estudiante',)
 def eliminar_estudiante(request, id):
     """
     """
@@ -141,7 +146,7 @@ def crear_numero_telefonico(request):
 
     return render(request, 'crearNumeroTelefonico.html', diccionario)
 
-
+@en_grupo('supervisor')
 def editar_numero_telefonico(request, id):
     """
     """
@@ -158,6 +163,7 @@ def editar_numero_telefonico(request, id):
 
     return render(request, 'crearNumeroTelefonico.html', diccionario)
 
+@en_grupo('supervisor')
 def crear_numero_telefonico_estudiante(request, id):
     """
     """
